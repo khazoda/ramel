@@ -35,8 +35,8 @@ public abstract class CamelEntityMixin extends LivingEntity {
         }
 
         /* Speed & Slowness affect knockback velocity */
-        MobEffectInstance speedEffect = this.getEffect(MobEffects.MOVEMENT_SPEED);
-        MobEffectInstance slowEffect = this.getEffect(MobEffects.MOVEMENT_SLOWDOWN);
+        MobEffectInstance speedEffect = this.getEffect(MobEffects.SPEED);
+        MobEffectInstance slowEffect = this.getEffect(MobEffects.SLOWNESS);
         int speedEffectModifier = speedEffect == null ? 0 : speedEffect.getAmplifier() + 1;
         int slowEffectModifier = slowEffect == null ? 0 : slowEffect.getAmplifier() + 1;
         double speedAdjustedImpact = Mth.clamp(this.getSpeed() * 1.65, .2, 3.0) + .25 * (speedEffectModifier - slowEffectModifier);
@@ -59,7 +59,7 @@ public abstract class CamelEntityMixin extends LivingEntity {
                     entity.playSound(SoundEvents.PLAYER_ATTACK_KNOCKBACK);
                     entity.hurt(source, rammingDamage);
 
-                    double shieldedMultiplier = entity.isDamageSourceBlocked(source) ? .5 : 1.0;
+                    double shieldedMultiplier = entity.isBlocking() ? .5 : 1.0;
                     double knockbackStrength = shieldedMultiplier * speedAdjustedImpact * knockbackMultiplier;
                     double knockupStrength = Mth.clamp(speedAdjustedImpact * 0.15 * knockupMultiplier, 0.0, 2.0);
 

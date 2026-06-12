@@ -6,10 +6,7 @@ def platformName = "Fabric"
 
 dependencies {
     minecraft("com.mojang:minecraft:${project.minecraft_version}")
-    mappings loom.layered() {
-        officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${project.parchment_minecraft_version}:${project.parchment_mappings_version}@zip")
-    }
+    mappings loom.officialMojangMappings()
     compileOnly(project(':common'))
 
     modImplementation("net.fabricmc:fabric-loader:${project.fabric_loader_version}")

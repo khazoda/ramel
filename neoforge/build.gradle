@@ -53,11 +53,6 @@ publishMods {
 neoForge {
     version = project.neoforge_version
 
-    parchment {
-        minecraftVersion = project.parchment_minecraft_version
-        mappingsVersion = project.parchment_mappings_version
-    }
-
     mods {
         "${mod_id}" {
             sourceSet sourceSets.main

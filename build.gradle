@@ -19,13 +19,6 @@ subprojects {
         maven { url = 'https://maven.quiltmc.org/repository/release' }
         maven { url = 'https://maven.terraformersmc.com/releases' }
         maven { url = 'https://repo.sleeping.town' }
-        maven {
-            name = "ParchmentMC"
-            url = "https://maven.parchmentmc.org"
-            content {
-                includeGroupAndSubgroups "org.parchmentmc"
-            }
-        }
     }
 
     java {
